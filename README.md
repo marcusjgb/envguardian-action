@@ -162,7 +162,7 @@ This action:
 ## 🔗 Related
 
 * EnvGuardian CLI: [https://www.npmjs.com/package/@marcosjgb/envguardian](https://www.npmjs.com/package/@marcosjgb/envguardian)
-* Main repository: [https://github.com/marcosjgb/envguardian](https://github.com/marcosjgb/envguardian)
+* Main repository: [https://github.com/marcusjgb/envguardian](https://github.com/marcusjgb/envguardian)
 
 ---
 
