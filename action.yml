@@ -1,6 +1,6 @@
 name: EnvGuardian Action
 description: Run EnvGuardian in GitHub Actions to detect missing environment variables before deploy.
-author: marcosjgb
+author: marcusjgb
 
 inputs:
   version:
@@ -29,7 +29,7 @@ runs:
     - name: Run EnvGuardian
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: npx @marcosjgb/envguardian@${{ inputs.version }} ${{ inputs.args }}
+      run: npx -y -p @marcosjgb/envguardian@${{ inputs.version }} envguardian ${{ inputs.args }}
 
 branding:
   icon: shield
