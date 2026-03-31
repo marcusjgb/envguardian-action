@@ -1,8 +1,4 @@
-Perfecto 🔥 te dejo el **README completo para `envguardian-action`**, listo para copiar y pegar tal cual.
 
----
-
-## 🚀 README para `envguardian-action`
 
 ````md
 # EnvGuardian Action
