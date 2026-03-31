@@ -1,0 +1,45 @@
+name: Test EnvGuardian Action
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+  pull_request:
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout action repo
+        uses: actions/checkout@v4
+
+      - name: Create sample project
+        run: |
+          mkdir sample
+
+          cat > sample/.env <<EOF
+          DATABASE_URL=dummy_database_url
+          JWT_SECRET=dummy_jwt_secret
+          VITE_API_URL=http://localhost:3000
+          EOF
+
+          cat > sample/.env.example <<EOF
+          DATABASE_URL=
+          JWT_SECRET=
+          VITE_API_URL=
+          EOF
+
+          cat > sample/index.js <<EOF
+          console.log(process.env.DATABASE_URL)
+          console.log(process.env.JWT_SECRET)
+          console.log(import.meta.env.VITE_API_URL)
+          EOF
+
+      - name: Run local action
+        uses: ./
+        with:
+          working-directory: sample
+          version: "0.1.3"
+          args: "check --ci --only-missing"

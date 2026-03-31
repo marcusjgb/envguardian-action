@@ -1,0 +1,36 @@
+name: EnvGuardian Action
+description: Run EnvGuardian in GitHub Actions to detect missing environment variables before deploy.
+author: marcosjgb
+
+inputs:
+  version:
+    description: EnvGuardian npm version to run
+    required: false
+    default: "0.1.3"
+
+  args:
+    description: Arguments passed to EnvGuardian
+    required: false
+    default: "check --ci --only-missing"
+
+  working-directory:
+    description: Working directory where EnvGuardian will run
+    required: false
+    default: "."
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Run EnvGuardian
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: npx @marcosjgb/envguardian@${{ inputs.version }} ${{ inputs.args }}
+
+branding:
+  icon: shield
+  color: green
