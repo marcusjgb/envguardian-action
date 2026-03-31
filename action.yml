@@ -26,10 +26,15 @@ runs:
       with:
         node-version: 20
 
+    - name: Install EnvGuardian
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: npm install --no-save @marcosjgb/envguardian@${{ inputs.version }}
+
     - name: Run EnvGuardian
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: npx -y -p @marcosjgb/envguardian@${{ inputs.version }} envguardian ${{ inputs.args }}
+      run: ./node_modules/.bin/envguardian ${{ inputs.args }}
 
 branding:
   icon: shield
