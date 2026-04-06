@@ -6,7 +6,7 @@ inputs:
   version:
     description: EnvGuardian npm version to run
     required: false
-    default: "0.1.3"
+    default: "0.1.4"
 
   args:
     description: Arguments passed to EnvGuardian
